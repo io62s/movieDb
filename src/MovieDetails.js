@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 class MovieDetails extends Component {
@@ -40,6 +41,9 @@ class MovieDetails extends Component {
     } = this.state.movie;
     return (
       <DetailContainer backdrop={`${BACK_PATH}${backdrop_path}`}>
+        <Link to="/">
+          <i class="fas fa-arrow-alt-circle-left" />
+        </Link>
         <Details>
           <img src={`${POSTER_PATH}${poster_path}`} alt={title} />
 
@@ -65,6 +69,23 @@ const DetailContainer = styled.div`
   box-sizing: border-box;
   background-image: url(${props => props.backdrop});
   background-size: cover;
+
+  .fa-arrow-alt-circle-left {
+    position: absolute;
+    top: 1.2rem;
+    left: 4rem;
+    font-size: 1.8rem;
+    opacity: 0.8;
+    color: #444;
+    z-index: 9999;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    transition: color 0.2s ease, opacity 0.2s ease;
+
+    &:hover {
+      color: #28bd55;
+      opacity: 1;
+    }
+  }
 `;
 
 const Details = styled.div`
