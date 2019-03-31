@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Overdrive from "react-overdrive";
 
-import { DetailContainer, Details, DetailText } from "../styles/Styles";
+import { DetailContainer, Details, DetailText, Imdb } from "../styles/Styles";
 
 class MovieDetails extends Component {
   state = {
@@ -31,8 +31,8 @@ class MovieDetails extends Component {
   };
 
   render() {
-    const POSTER_PATH = "http://image.tmdb.org/t/p/w185/";
-    const BACK_PATH = "http://image.tmdb.org/t/p/original/";
+    const POSTER_PATH = "http://image.tmdb.org/t/p/w185";
+    const BACK_PATH = "http://image.tmdb.org/t/p/original";
     const {
       poster_path,
       backdrop_path,
@@ -40,7 +40,8 @@ class MovieDetails extends Component {
       vote_average,
       overview,
       release_date,
-      id
+      id,
+      imdb_id
     } = this.state.movie;
     return (
       <DetailContainer backdrop={`${BACK_PATH}${backdrop_path}`}>
@@ -63,6 +64,13 @@ class MovieDetails extends Component {
               ) : (
                 <strong>{vote_average}</strong>
               )}
+              <Imdb
+                href={`https://www.imdb.com/title/${imdb_id}/?ref_=nv_sr_1`}
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                <i className="fab fa-imdb" />
+              </Imdb>
             </div>
           </DetailText>
         </Details>

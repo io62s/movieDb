@@ -1,7 +1,6 @@
 import React, { PureComponent } from "react";
 import Movie from "./Movie";
-
-import { PageBtns, MoviesContainer } from "../styles/Styles";
+import { PageBtns, MoviesContainer, GoTo } from "../styles/Styles";
 
 class MoviesList extends PureComponent {
   state = {
@@ -12,19 +11,28 @@ class MoviesList extends PureComponent {
   nextPage = () => {
     this.setState(
       {
-        page: this.state.page + 1
+        page: parseInt(this.state.page) + 1
       },
       () => this.getMovies()
     );
   };
 
   prevPage = () => {
-    if (this.state.page === 1) {
+    if (this.state.page <= 1) {
       return;
     }
     this.setState(
       {
-        page: this.state.page - 1
+        page: parseInt(this.state.page) - 1
+      },
+      () => this.getMovies()
+    );
+  };
+
+  goToPage = e => {
+    this.setState(
+      {
+        page: e.target.value
       },
       () => this.getMovies()
     );
@@ -56,11 +64,21 @@ class MoviesList extends PureComponent {
     return (
       <>
         <PageBtns>
-          {this.state.page === 1 ? null : (
-            <button onClick={this.prevPage}>Prev page</button>
-          )}
-          page: <strong>{this.state.page}</strong>
-          <button onClick={this.nextPage}>Next page</button>
+          <GoTo onSubmit={this.goToPage}>
+            <span>Go to page:</span>
+            <input
+              type="number"
+              value={this.state.page}
+              onChange={this.goToPage}
+            />
+          </GoTo>
+          <div>
+            {this.state.page === 1 || this.state.page === "" ? null : (
+              <button onClick={this.prevPage}>Prev page</button>
+            )}
+            page: <strong>{this.state.page}</strong>
+            <button onClick={this.nextPage}>Next page</button>
+          </div>
         </PageBtns>
         <MoviesContainer>
           {movies.map(movie => (

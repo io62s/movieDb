@@ -27,23 +27,26 @@ const Header = styled.div`
     color: #272727;
   }
 `;
-
+/******************************************** */
 /******MOVIES LIST */
 const PageBtns = styled.div`
   position: relative;
   box-sizing: border-box;
   top: 5rem;
-  width: 18rem;
-  margin: 0 auto 2rem;
+  width: 40%;
+  margin: 0 auto 3rem;
+  padding: 1rem 0.5rem;
   display: flex;
-  justify-content: center;
+  flex-wrap: wrap;
+  justify-content: space-around;
   align-items: center;
   strong {
     color: #275033;
   }
   button {
     border: none;
-    padding: 0.5rem 1rem;
+    border-radius: 3px;
+    padding: 0.3rem 1rem;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
     background: #6cee93;
     transition: background 0.2s ease;
@@ -64,6 +67,7 @@ const PageBtns = styled.div`
 `;
 
 const MoviesContainer = styled.div`
+  box-sizing: border-box;
   position: relative;
   text-align: center;
   max-width: 1200px;
@@ -73,6 +77,36 @@ const MoviesContainer = styled.div`
   grid-gap: 1.5rem;
 `;
 
+const GoTo = styled.div`
+  box-sizing: border-box;
+  position: relative;
+  width: 12rem;
+  margin: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  input {
+    width: 5rem;
+    flex: 1;
+    padding: 0.2rem;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+
+    &:focus {
+      outline: none;
+      border: none;
+    }
+  }
+
+  span {
+    flex: 1;
+    margin-right: 0.5rem;
+    white-space: nowrap;
+  }
+`;
+/******************************************** */
 /****MOVIE */
 
 const MovieCard = styled.div`
@@ -118,7 +152,7 @@ const DetailBtn = styled.button`
     background: #28bd55;
   }
 `;
-
+/******************************************** */
 /*****MOVIE DETAILS */
 const DetailContainer = styled.div`
   position: relative;
@@ -173,6 +207,9 @@ const Details = styled.div`
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12), 0 6px 6px rgba(0, 0, 0, 0.24);
   }
   .rating {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
     color: #272727;
     padding-top: 1rem;
     .fas {
@@ -192,7 +229,18 @@ const DetailText = styled.div`
   justify-content: flex-start;
   align-content: center;
 `;
-/********** */
+
+const Imdb = styled.a`
+  font-size: 2rem;
+  color: #272727;
+  margin-left: 2rem;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: #ffd600;
+  }
+`;
+/******************************************** */
 
 export {
   Container,
@@ -203,5 +251,7 @@ export {
   DetailBtn,
   DetailContainer,
   Details,
-  DetailText
+  DetailText,
+  Imdb,
+  GoTo
 };

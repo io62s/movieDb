@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import PropTypes from "prop-types";
 import Overdrive from "react-overdrive";
 
 import "../App.css";
@@ -22,12 +21,6 @@ const Movie = ({ movie }) => {
       </Link>
     </MovieCard>
   );
-};
-
-Movie.propTypes = {
-  movie: PropTypes.shape({
-    title: PropTypes.string.isRequired
-  })
 };
 
 export default Movie;
