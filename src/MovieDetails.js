@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-
+import Overdrive from "react-overdrive";
 class MovieDetails extends Component {
   state = {
     movie: {}
@@ -37,26 +37,32 @@ class MovieDetails extends Component {
       title,
       vote_average,
       overview,
-      release_date
+      release_date,
+      id
     } = this.state.movie;
     return (
       <DetailContainer backdrop={`${BACK_PATH}${backdrop_path}`}>
         <Link to="/">
-          <i class="fas fa-arrow-alt-circle-left" />
+          <i className="fas fa-arrow-alt-circle-left" />
         </Link>
         <Details>
-          <img src={`${POSTER_PATH}${poster_path}`} alt={title} />
-
-          <div>
+          <Overdrive id={id} duration={400}>
+            <img src={`${POSTER_PATH}${poster_path}`} alt={title} />
+          </Overdrive>
+          <DetailText className="detail-text">
             <h1>{title}</h1>
             <h4>Released: {release_date}</h4>
             <p>{overview}</p>
             <hr />
             <div className="rating">
               Average Rating: <i className="fas fa-star" />
-              <strong>{vote_average}</strong>
+              {vote_average === 0 ? (
+                "Not yet rated"
+              ) : (
+                <strong>{vote_average}</strong>
+              )}
             </div>
-          </div>
+          </DetailText>
         </Details>
       </DetailContainer>
     );
@@ -95,6 +101,8 @@ const Details = styled.div`
   text-align: left;
   padding: 1rem 10vw;
   display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
   flex-wrap: wrap;
 
   h1 {
@@ -105,18 +113,17 @@ const Details = styled.div`
   p {
     padding-bottom: 2rem;
   }
-
-  > div {
-    margin-left: 2rem;
-    display: flex;
-    flex: 7;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-content: center;
+  img {
+    display: block;
+    position: relative;
+    width: 185px;
+    top: -6rem;
+    opacity: 1;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12), 0 6px 6px rgba(0, 0, 0, 0.24);
   }
   .rating {
     color: #272727;
-    padding-top: 2rem;
+    padding-top: 1rem;
     .fas {
       color: orange;
     }
@@ -124,14 +131,15 @@ const Details = styled.div`
       color: #272727;
     }
   }
+`;
 
-  > img {
-    position: relative;
-    flex: 1;
-    top: -6rem;
-    opacity: 1;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12), 0 6px 6px rgba(0, 0, 0, 0.24);
-  }
+const DetailText = styled.div`
+  margin-left: 2rem;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-content: center;
 `;
 
 export default MovieDetails;
