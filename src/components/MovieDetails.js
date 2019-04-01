@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import Overdrive from "react-overdrive";
 
 import { DetailContainer, Details, DetailText, Imdb } from "../styles/Styles";
 
@@ -40,18 +38,13 @@ class MovieDetails extends Component {
       vote_average,
       overview,
       release_date,
-      id,
       imdb_id
     } = this.state.movie;
     return (
       <DetailContainer backdrop={`${BACK_PATH}${backdrop_path}`}>
-        <Link to="/">
-          <i className="fas fa-arrow-alt-circle-left" />
-        </Link>
         <Details>
-          <Overdrive id={id} duration={400}>
-            <img src={`${POSTER_PATH}${poster_path}`} alt={title} />
-          </Overdrive>
+          <img src={`${POSTER_PATH}${poster_path}`} alt={title} />
+
           <DetailText className="detail-text">
             <h1>{title}</h1>
             <h4>Released: {release_date}</h4>

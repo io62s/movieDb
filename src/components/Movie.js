@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Overdrive from "react-overdrive";
 
 import "../App.css";
 import { MovieCard, DetailBtn } from "../styles/Styles";
@@ -12,9 +11,8 @@ const Movie = ({ movie }) => {
 
   return (
     <MovieCard>
-      <Overdrive id={id} duration={400}>
-        <img src={`${POSTER_PATH}${poster_path}`} alt={title} />
-      </Overdrive>
+      <img src={`${POSTER_PATH}${poster_path}`} alt={title} />
+
       <h3>{title}</h3>
       <Link className="btn-container" to={`/${id}`}>
         <DetailBtn>Details</DetailBtn>

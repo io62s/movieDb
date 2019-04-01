@@ -43,6 +43,9 @@ const PageBtns = styled.div`
   strong {
     color: #275033;
   }
+  @media screen and (max-width: 500px) {
+    width: 100%;
+  }
   button {
     border: none;
     border-radius: 3px;
@@ -86,6 +89,11 @@ const GoTo = styled.div`
   justify-content: space-around;
   align-items: center;
 
+  @media screen and (max-width: 500px) {
+    width: 60%;
+    margin-bottom: 0.8rem;
+    justify-content: space-between;
+  }
   input {
     width: 5rem;
     flex: 1;
@@ -129,6 +137,12 @@ const MovieCard = styled.div`
   h3 {
     color: #333333;
   }
+
+  @media screen and (max-width: 500px) {
+    padding: 1rem;
+    width: 65%;
+    margin: 0 auto;
+  }
 `;
 
 const DetailBtn = styled.button`
@@ -156,27 +170,11 @@ const DetailBtn = styled.button`
 /*****MOVIE DETAILS */
 const DetailContainer = styled.div`
   position: relative;
-  height: 100vh;
+  width: 100%;
+  min-height: 100vh;
   box-sizing: border-box;
   background-image: url(${props => props.backdrop});
   background-size: cover;
-
-  .fa-arrow-alt-circle-left {
-    position: absolute;
-    top: 1.2rem;
-    left: 4rem;
-    font-size: 1.8rem;
-    opacity: 0.8;
-    color: #444;
-    z-index: 9999;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-    transition: color 0.2s ease, opacity 0.2s ease;
-
-    &:hover {
-      color: #28bd55;
-      opacity: 1;
-    }
-  }
 `;
 
 const Details = styled.div`
@@ -190,22 +188,39 @@ const Details = styled.div`
   align-items: flex-start;
   flex-wrap: wrap;
 
+  img {
+    position: absolute;
+    left: 6;
+    width: 185px;
+    top: -12rem;
+    opacity: 1;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12), 0 6px 6px rgba(0, 0, 0, 0.24);
+  }
+
+  @media screen and (max-width: 500px) {
+    position: relative;
+
+    img {
+      position: relative;
+      top: 4rem;
+    }
+  }
+`;
+
+const DetailText = styled.div`
+  width: 100%;
+  padding-top: 5rem;
+  position: relative;
+
   h1 {
-    padding-top: 2rem;
+    padding-top: 1rem;
   }
 
   h4,
   p {
     padding-bottom: 2rem;
   }
-  img {
-    display: block;
-    position: relative;
-    width: 185px;
-    top: -6rem;
-    opacity: 1;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12), 0 6px 6px rgba(0, 0, 0, 0.24);
-  }
+
   .rating {
     display: flex;
     align-items: center;
@@ -219,15 +234,6 @@ const Details = styled.div`
       color: #272727;
     }
   }
-`;
-
-const DetailText = styled.div`
-  margin-left: 2rem;
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-content: center;
 `;
 
 const Imdb = styled.a`
