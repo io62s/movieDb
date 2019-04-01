@@ -25,6 +25,11 @@ const Header = styled.div`
 
   h3 {
     color: #272727;
+    transition: color 0.2s ease-out;
+  }
+
+  h3:hover {
+    color: #28bd55;
   }
 `;
 /******************************************** */
