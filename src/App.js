@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import Movieslist from "./components/MoviesList";
 import MovieDetails from "./components/MovieDetails";
+import Home from "./components/Home";
 
 import "./App.css";
 import { Container, Header } from "./styles/Styles";
@@ -17,8 +18,13 @@ const App = () => {
         </Header>
 
         <Switch>
-          <Route exact path="/" component={Movieslist} />
-          <Route path="/:id" component={MovieDetails} />
+          <Route exact path="/" component={Home} />
+          <Route
+            exact
+            path="/movies/:page"
+            render={props => <Movieslist {...props} />}
+          />
+          <Route path="/:id" render={props => <MovieDetails {...props} />} />
         </Switch>
       </Container>
     </Router>

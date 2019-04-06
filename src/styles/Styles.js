@@ -33,6 +33,52 @@ const Header = styled.div`
   }
 `;
 /******************************************** */
+const HomeContainer = styled.div`
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #d1d1d1;
+  background-size: cover;
+
+  h1 {
+    color: #fefefe;
+    z-index: 100;
+    margin-bottom: 2rem;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.7);
+  }
+
+  .movies-btn {
+    padding: 0.6rem 2rem;
+    color: #fefefe;
+    font-weight: bold;
+    text-align: center;
+    background: #28bd55;
+    z-index: 100;
+    transition: background 0.2s ease-out;
+
+    &:hover {
+      background: #6cee93;
+    }
+  }
+`;
+/************************HOME */
+
 /******MOVIES LIST */
 const PageBtns = styled.div`
   position: relative;
@@ -184,6 +230,8 @@ const DetailContainer = styled.div`
 
 const Details = styled.div`
   position: absolute;
+  left: 0;
+  right: 0;
   bottom: 0;
   background: rgba(255, 255, 255, 0.85);
   text-align: left;
@@ -213,7 +261,6 @@ const Details = styled.div`
 `;
 
 const DetailText = styled.div`
-  width: 100%;
   padding-top: 5rem;
   position: relative;
 
@@ -251,6 +298,20 @@ const Imdb = styled.a`
     color: #ffd600;
   }
 `;
+
+const GoBackBtn = styled.div`
+  position: absolute;
+  top: 6rem;
+  left: 3rem;
+  background: #28bd55;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  font-weight: bold;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  cursor: pointer;
+`;
 /******************************************** */
 
 export {
@@ -264,5 +325,7 @@ export {
   Details,
   DetailText,
   Imdb,
-  GoTo
+  GoTo,
+  HomeContainer,
+  GoBackBtn
 };

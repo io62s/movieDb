@@ -1,20 +1,22 @@
-import React, { PureComponent } from "react";
+import React, { Component } from "react";
 import Movie from "./Movie";
-import { PageBtns, MoviesContainer, GoTo } from "../styles/Styles";
+import { PageBtns, MoviesContainer } from "../styles/Styles";
+import { Link } from "react-router-dom";
 
-class MoviesList extends PureComponent {
+class MoviesList extends Component {
   state = {
     movies: [],
-    page: 1
+    page: +this.props.match.params.page
   };
 
   nextPage = () => {
     this.setState(
       {
-        page: parseInt(this.state.page) + 1
+        page: +this.state.page + 1
       },
       () => this.getMovies()
     );
+    // console.log(this.state.page);
   };
 
   prevPage = () => {
@@ -23,19 +25,11 @@ class MoviesList extends PureComponent {
     }
     this.setState(
       {
-        page: parseInt(this.state.page) - 1
+        page: +this.state.page - 1
       },
       () => this.getMovies()
     );
-  };
-
-  goToPage = e => {
-    this.setState(
-      {
-        page: e.target.value
-      },
-      () => this.getMovies()
-    );
+    // console.log(this.state.page);
   };
 
   getMovies = async () => {
@@ -46,6 +40,7 @@ class MoviesList extends PureComponent {
     try {
       const res = await fetch(`${url}`);
       const movies = await res.json();
+      console.log(movies.page);
 
       this.setState({
         movies: movies.results
@@ -64,20 +59,16 @@ class MoviesList extends PureComponent {
     return (
       <>
         <PageBtns>
-          <GoTo onSubmit={this.goToPage}>
-            <span>Go to page:</span>
-            <input
-              type="number"
-              value={this.state.page}
-              onChange={this.goToPage}
-            />
-          </GoTo>
           <div>
-            {this.state.page === 1 || this.state.page === "" ? null : (
-              <button onClick={this.prevPage}>Prev page</button>
+            {this.state.page <= 1 ? null : (
+              <Link to={`/movies/${this.state.page}`}>
+                <button onClick={this.prevPage}>Prev page</button>
+              </Link>
             )}
             page: <strong>{this.state.page}</strong>
-            <button onClick={this.nextPage}>Next page</button>
+            <Link to={`/movies/${this.state.page}`}>
+              <button onClick={this.nextPage}>Next page</button>
+            </Link>
           </div>
         </PageBtns>
         <MoviesContainer>

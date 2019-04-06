@@ -1,6 +1,12 @@
 import React, { Component } from "react";
 
-import { DetailContainer, Details, DetailText, Imdb } from "../styles/Styles";
+import {
+  DetailContainer,
+  Details,
+  DetailText,
+  Imdb,
+  GoBackBtn
+} from "../styles/Styles";
 
 class MovieDetails extends Component {
   state = {
@@ -24,6 +30,10 @@ class MovieDetails extends Component {
     }
   };
 
+  goback = params => {
+    this.props.history.goBack();
+  };
+
   componentDidMount = () => {
     this.getMovies();
   };
@@ -42,6 +52,7 @@ class MovieDetails extends Component {
     } = this.state.movie;
     return (
       <DetailContainer backdrop={`${BACK_PATH}${backdrop_path}`}>
+        <GoBackBtn onClick={this.goback}>Back to Movies</GoBackBtn>
         <Details>
           <img src={`${POSTER_PATH}${poster_path}`} alt={title} />
 
