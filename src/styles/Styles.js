@@ -64,16 +64,24 @@ const HomeContainer = styled.div`
   }
 
   .movies-btn {
-    padding: 0.6rem 2rem;
-    color: #fefefe;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+    border: none;
+    background: #6cee93;
+    color: #fff;
     font-weight: bold;
+    font-size: 1rem;
     text-align: center;
-    background: #28bd55;
-    z-index: 100;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
     transition: background 0.2s ease-out;
 
     &:hover {
-      background: #6cee93;
+      background: #28bd55;
     }
   }
 `;
