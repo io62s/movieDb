@@ -30,7 +30,7 @@ class MovieDetails extends Component {
     }
   };
 
-  goback = params => {
+  goback = () => {
     this.props.history.goBack();
   };
 

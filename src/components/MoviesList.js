@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 class MoviesList extends Component {
   state = {
     movies: [],
-    page: +this.props.match.params.page
+    page: 1
   };
 
   nextPage = () => {
@@ -61,12 +61,12 @@ class MoviesList extends Component {
         <PageBtns>
           <div>
             {this.state.page <= 1 ? null : (
-              <Link to={`/movies/${this.state.page}`}>
+              <Link to={`/movies`}>
                 <button onClick={this.prevPage}>Prev page</button>
               </Link>
             )}
             page: <strong>{this.state.page}</strong>
-            <Link to={`/movies/${this.state.page}`}>
+            <Link to={`/movies`}>
               <button onClick={this.nextPage}>Next page</button>
             </Link>
           </div>

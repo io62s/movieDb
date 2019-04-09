@@ -9,7 +9,7 @@ const Home = () => {
     <HomeContainer style={{ backgroundImage: `url(${img})` }}>
       <div className="overlay" />
       <h1>Browse Movies</h1>
-      <Link className="movies-btn" to={`/movies/1`}>
+      <Link className="movies-btn" to={`/movies`}>
         Movie List
       </Link>
     </HomeContainer>
