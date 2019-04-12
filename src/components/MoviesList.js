@@ -11,12 +11,11 @@ class MoviesList extends Component {
 
   nextPage = () => {
     this.setState(
-      {
-        page: +this.state.page + 1
+      prevState => {
+        return { page: +prevState.page + 1 };
       },
       () => this.getMovies()
     );
-    // console.log(this.state.page);
   };
 
   prevPage = () => {
@@ -24,12 +23,11 @@ class MoviesList extends Component {
       return;
     }
     this.setState(
-      {
-        page: +this.state.page - 1
+      prevState => {
+        return { page: +prevState.page - 1 };
       },
       () => this.getMovies()
     );
-    // console.log(this.state.page);
   };
 
   getMovies = async () => {
