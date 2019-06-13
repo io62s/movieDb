@@ -302,6 +302,7 @@ const Imdb = styled.a`
 
 const GoBackBtn = styled.div`
   position: absolute;
+  z-index: 20;
   top: 6rem;
   left: 3rem;
   background: #28bd55;
